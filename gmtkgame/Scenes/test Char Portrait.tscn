@@ -1,22 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0oqabjnla7m6"]
+[gd_scene load_steps=3 format=3 uid="uid://c0oqabjnla7m6"]
 
 [ext_resource type="PackedScene" uid="uid://rl5ksrylnq8v" path="res://Scenes/scary test.tscn" id="1_33wjg"]
 [ext_resource type="Script" path="res://Scenes/test_char_portrait.gd" id="1_uwmq0"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_07ttu"]
-viewport_path = NodePath("scary test/Camera3D/SubViewport")
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_uwmq0")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("ViewportTexture_07ttu")
 
 [node name="scary test" parent="." instance=ExtResource("1_33wjg")]
 
 [node name="Camera3D" type="Camera3D" parent="scary test"]
-transform = Transform3D(1, 0, 0, 0, 0.945445, 0.325783, 0, -0.325783, 0.945445, 0, 1.35996, 1.38635)
+transform = Transform3D(1, 0, 0, 0, 0.975989, 0.21782, 0, -0.21782, 0.975989, 0, 1.59123, 2.40536)
+fov = 39.1382
 
-[node name="SubViewport" type="SubViewport" parent="scary test/Camera3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="scary test/Camera3D"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="scary test"]
+transform = Transform3D(0.888599, 0.151886, -0.432807, 0.00585883, 0.939748, 0.341817, 0.458647, -0.306274, 0.83417, 0, 0, 0)

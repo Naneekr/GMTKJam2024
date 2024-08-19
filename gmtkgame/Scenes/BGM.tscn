@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://f7mlxr44y5u"]
+
+[ext_resource type="AudioStream" uid="uid://dxvrwgc3l6q8" path="res://Scenes/Metalworks.mp3" id="1_yb0b0"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_yb0b0")
+volume_db = -5.0
+autoplay = true

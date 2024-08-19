@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="GMTKGame"
+run/main_scene="res://Scenes/TestMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Bgm="*res://Scenes/BGM.tscn"
 
 [dialogic]
 

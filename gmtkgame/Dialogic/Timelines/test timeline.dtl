@@ -1,6 +1,15 @@
 This test is ill advised....
-join Test_Char center
+join Test_Char center [length="1.0" wait="true"]
 Test_Char: This is not so good...
-Test_Char: ...
-[wait time="3.0"]
+Test_Char: ...\
+\
+....\
+\
+.....
+[sound path="res://Scenes/brah.mp3" volume="-5.0"]
+leave Test_Char [length="1.0" wait="true"]
+[wait time="2.0"]
+well....
+see ya
+[wait time="1.0"]
 [end_timeline]
