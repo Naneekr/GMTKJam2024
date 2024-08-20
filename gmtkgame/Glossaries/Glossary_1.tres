@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogicGlossary" load_steps=2 format=3 uid="uid://c75ao6jef0m48"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Glossary/glossary_resource.gd" id="1_6741m"]
+
+[resource]
+script = ExtResource("1_6741m")
+entries = {
+"Important Lore": {
+"case_sensitive": true,
+"color": Color(0.839844, 0.811394, 0.111542, 1),
+"name": "Important Lore",
+"text": "This is one of the ancient brah protectors",
+"title": "The important lore"
+}
+}
+enabled = true
+_translation_id = ""
+_translation_keys = {}

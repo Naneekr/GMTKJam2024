@@ -5,18 +5,11 @@ Test_Char: ...\
 \
 ....\
 \
-Important Lore\
-\
 .....
 [sound path="res://Scenes/brah.mp3" volume="-5.0"]
 leave Test_Char [length="1.0" wait="true"]
 [wait time="2.0"]
-- Yes
-	You really thought...
-	[signal arg="Yes"]
-- No
-	well....
-	see ya
-	[signal arg="No"]
+well....
+see ya
 [wait time="1.0"]
 [end_timeline]
