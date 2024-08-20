@@ -1,1 +1,2 @@
-Make me a sword worthy of a god!
+join "Sword Client" left [animation="Slide In Up" length="1.0" wait="true"]
+"Sword Client": Make me a sword worthy of a god!

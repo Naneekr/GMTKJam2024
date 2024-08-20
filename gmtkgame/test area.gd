@@ -14,6 +14,6 @@ func _on_timeline_ended():
 
 func path_chosen(choice_string):
 	if choice_string == "Yes":
-		print("Chose yes!")
+		get_tree().change_scene_to_file("res://Scenes/Shop.tscn")
 	else:
-		print("Chose no!")
+		get_tree().change_scene_to_file("res://Scenes/Shop.tscn")
