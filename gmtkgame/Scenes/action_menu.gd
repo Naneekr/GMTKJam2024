@@ -6,10 +6,13 @@ signal map_signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$MarginContainer/AspectRatioContainer/ClientButton.pressed.connect(client_signal.emit)
-	$MarginContainer2/AspectRatioContainer2/SmithButton.pressed.connect(smith_signal.emit)
-	$MarginContainer3/AspectRatioContainer3/MapButton.pressed.connect(map_signal.emit)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func connect_buttons(_client_func: Callable, _smith_func: Callable, _map_func: Callable) -> void:
+	$MarginContainer/AspectRatioContainer/ClientButton.pressed.connect(_client_func)
+	$MarginContainer2/AspectRatioContainer2/SmithButton.pressed.connect(_smith_func)
+	$MarginContainer3/AspectRatioContainer3/MapButton.pressed.connect(_map_func)

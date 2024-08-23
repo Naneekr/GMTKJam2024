@@ -11,9 +11,7 @@ var hour_label
 func _ready() -> void:
 	hour_label = $VBoxContainer/HBoxContainer/HourCountLabel
 	var action_menu = $VBoxContainer/TabContainer/ActionMenu
-	action_menu.client_signal.connect(_take_client)
-	action_menu.smith_signal.connect(_smith_item)
-	action_menu.map_signal.connect(_go_to_map)
+	action_menu.connect_buttons(_take_client, _smith_item, _go_to_map)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
