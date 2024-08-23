@@ -9,13 +9,11 @@ var hour_label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var tab_1 = $VBoxContainer/TabContainer/BoxContainer
-	tab_1.get_node("MarginContainer/AspectRatioContainer/ClientButton").pressed.connect(self._take_client)
-	tab_1.get_node("MarginContainer2/AspectRatioContainer2/SmithButton").pressed.connect(self._smith_item)
-	tab_1.get_node("MarginContainer3/AspectRatioContainer3/MapButton").pressed.connect(self._go_to_map)
-	
 	hour_label = $VBoxContainer/HBoxContainer/HourCountLabel
-
+	var action_menu = $VBoxContainer/TabContainer/ActionMenu
+	action_menu.client_signal.connect(_take_client)
+	action_menu.smith_signal.connect(_smith_item)
+	action_menu.map_signal.connect(_go_to_map)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

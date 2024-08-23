@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt12atvv2fij"]
+
+[ext_resource type="Script" path="res://Scenes/action_menu.gd" id="1_6gpk3"]
+
+[node name="ActionMenu" type="BoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_6gpk3")
+metadata/_tab_index = 0
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClientButton" type="Button" parent="MarginContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "Take Client"
+
+[node name="Container2" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SmithButton" type="Button" parent="MarginContainer2/AspectRatioContainer2"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "Smith"
+
+[node name="Container3" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MapButton" type="Button" parent="MarginContainer3/AspectRatioContainer3"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "Go To Map"
+
+[node name="Container4" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25

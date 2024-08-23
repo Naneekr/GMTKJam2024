@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6ffisb0lbxjs"]
+[gd_scene load_steps=3 format=3 uid="uid://c6ffisb0lbxjs"]
 
 [ext_resource type="Script" path="res://control_script.gd" id="1_s56yj"]
+[ext_resource type="PackedScene" uid="uid://dt12atvv2fij" path="res://Scenes/ActionMenu.tscn" id="2_2unx5"]
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
@@ -46,80 +47,5 @@ size_flags_vertical = 3
 current_tab = 0
 tabs_visible = false
 
-[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/TabContainer"]
+[node name="ActionMenu" parent="VBoxContainer/TabContainer" instance=ExtResource("2_2unx5")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-metadata/_tab_index = 0
-
-[node name="Container" type="Control" parent="VBoxContainer/TabContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.25
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TabContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/TabContainer/BoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ClientButton" type="Button" parent="VBoxContainer/TabContainer/BoxContainer/MarginContainer/AspectRatioContainer"]
-custom_minimum_size = Vector2(1, 1)
-layout_mode = 2
-text = "Take Client"
-
-[node name="Container2" type="Control" parent="VBoxContainer/TabContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.25
-
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/TabContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="VBoxContainer/TabContainer/BoxContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SmithButton" type="Button" parent="VBoxContainer/TabContainer/BoxContainer/MarginContainer2/AspectRatioContainer2"]
-custom_minimum_size = Vector2(1, 1)
-layout_mode = 2
-text = "Smith"
-
-[node name="Container3" type="Control" parent="VBoxContainer/TabContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.25
-
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/TabContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="VBoxContainer/TabContainer/BoxContainer/MarginContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MapButton" type="Button" parent="VBoxContainer/TabContainer/BoxContainer/MarginContainer3/AspectRatioContainer3"]
-custom_minimum_size = Vector2(1, 1)
-layout_mode = 2
-text = "Go To Map"
-
-[node name="Container4" type="Control" parent="VBoxContainer/TabContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.25
