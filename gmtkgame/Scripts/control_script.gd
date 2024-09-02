@@ -41,8 +41,8 @@ func _ready() -> void:
 	hour_label = $VBoxContainer/HBoxContainer/HourCountLabel #type_string(typeof())
 	tab_container = $VBoxContainer/TabContainer
 	var action_menu = $VBoxContainer/TabContainer/ActionMenu
-	action_menu.connect_buttons(_take_client, _smith_item, _go_to_map)
-	tab_container.get_node("MapMenu").connect_buttons([func(): print("1"), func(): print("2"), func(): print("3")])
+	action_menu.connect_menu_buttons([_take_client, _smith_item, _go_to_map])
+	tab_container.get_node("MapMenu").connect_menu_buttons([func(): print("1"), func(): print("2"), func(): print("3")])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

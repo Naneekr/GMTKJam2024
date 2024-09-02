@@ -1,20 +1,36 @@
 [gd_scene load_steps=2 format=3 uid="uid://dt12atvv2fij"]
 
-[ext_resource type="Script" path="res://Scripts/action_menu.gd" id="1_6gpk3"]
+[ext_resource type="Script" path="res://Scripts/sub_menu.gd" id="1_o47j4"]
 
-[node name="ActionMenu" type="BoxContainer"]
+[node name="ActionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_o47j4")
+
+[node name="HContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
-script = ExtResource("1_6gpk3")
 metadata/_tab_index = 0
 
-[node name="Container" type="Control" parent="."]
+[node name="Container" type="Control" parent="HContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="HContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -22,21 +38,21 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ClientButton" type="Button" parent="MarginContainer/AspectRatioContainer"]
+[node name="ClientButton" type="Button" parent="HContainer/MarginContainer/AspectRatioContainer" groups=["SubMenuButton"]]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 text = "Take Client"
 
-[node name="Container2" type="Control" parent="."]
+[node name="Container2" type="Control" parent="HContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="MarginContainer2" type="MarginContainer" parent="HContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -44,21 +60,21 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MarginContainer2"]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="HContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SmithButton" type="Button" parent="MarginContainer2/AspectRatioContainer2"]
+[node name="SmithButton" type="Button" parent="HContainer/MarginContainer2/AspectRatioContainer2" groups=["SubMenuButton"]]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 text = "Smith"
 
-[node name="Container3" type="Control" parent="."]
+[node name="Container3" type="Control" parent="HContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 
-[node name="MarginContainer3" type="MarginContainer" parent="."]
+[node name="MarginContainer3" type="MarginContainer" parent="HContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -66,16 +82,16 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="MarginContainer3"]
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="HContainer/MarginContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MapButton" type="Button" parent="MarginContainer3/AspectRatioContainer3"]
+[node name="MapButton" type="Button" parent="HContainer/MarginContainer3/AspectRatioContainer3" groups=["SubMenuButton"]]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 text = "Go To Map"
 
-[node name="Container4" type="Control" parent="."]
+[node name="Container4" type="Control" parent="HContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25

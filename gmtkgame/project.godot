@@ -63,6 +63,10 @@ glossary/glossary_files=["res://Glossaries/Glossary_1.tres"]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
+[global_group]
+
+SubMenuButton=""
+
 [input]
 
 dialogic_default_action={

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjjoo5qov64l"]
 
-[ext_resource type="Script" path="res://Scripts/smith_menu.gd" id="1_fa0kv"]
+[ext_resource type="Script" path="res://Scripts/sub_menu.gd" id="1_aef5b"]
 
 [node name="SmithMenu" type="Control"]
 layout_mode = 3
@@ -11,13 +11,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_fa0kv")
+script = ExtResource("1_aef5b")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 525.0
+offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -33,7 +35,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="CopperButton" type="Button" parent="HBoxContainer/SwordContainer/MarginContainer"]
+[node name="BronzeButton" type="Button" parent="HBoxContainer/SwordContainer/MarginContainer" groups=["SubMenuButton"]]
 layout_mode = 2
 text = "Copper Sword"
 
@@ -45,7 +47,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="SteelButton" type="Button" parent="HBoxContainer/SwordContainer/MarginContainer2"]
+[node name="SteelButton" type="Button" parent="HBoxContainer/SwordContainer/MarginContainer2" groups=["SubMenuButton"]]
 layout_mode = 2
 text = "Steel Sword"
 
@@ -57,7 +59,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="OrichalcumButton" type="Button" parent="HBoxContainer/SwordContainer/MarginContainer3"]
+[node name="OrichalcumButton" type="Button" parent="HBoxContainer/SwordContainer/MarginContainer3" groups=["SubMenuButton"]]
 layout_mode = 2
 text = "Orichalcum Sword"
 
@@ -73,7 +75,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="CopperButton" type="Button" parent="HBoxContainer/DaggerContainer/MarginContainer"]
+[node name="BronzeButton" type="Button" parent="HBoxContainer/DaggerContainer/MarginContainer" groups=["SubMenuButton"]]
 layout_mode = 2
 text = "Copper Dagger"
 
@@ -85,7 +87,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="SteelButton" type="Button" parent="HBoxContainer/DaggerContainer/MarginContainer2"]
+[node name="SteelButton" type="Button" parent="HBoxContainer/DaggerContainer/MarginContainer2" groups=["SubMenuButton"]]
 layout_mode = 2
 text = "Steel Dagger"
 
@@ -97,7 +99,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="OrichalcumButton" type="Button" parent="HBoxContainer/DaggerContainer/MarginContainer3"]
+[node name="OrichalcumButton" type="Button" parent="HBoxContainer/DaggerContainer/MarginContainer3" groups=["SubMenuButton"]]
 layout_mode = 2
 text = "Orichalcum Dagger"
 
@@ -113,7 +115,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="CopperButton" type="Button" parent="HBoxContainer/StaffContainer/MarginContainer"]
+[node name="OakButton" type="Button" parent="HBoxContainer/StaffContainer/MarginContainer" groups=["SubMenuButton"]]
 layout_mode = 2
 text = "Oak Staff"
 
@@ -125,7 +127,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="SteelButton" type="Button" parent="HBoxContainer/StaffContainer/MarginContainer2"]
+[node name="MahoganyButton" type="Button" parent="HBoxContainer/StaffContainer/MarginContainer2" groups=["SubMenuButton"]]
 layout_mode = 2
 text = "Mahogany Staff"
 
@@ -137,6 +139,6 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="OrichalcumButton" type="Button" parent="HBoxContainer/StaffContainer/MarginContainer3"]
+[node name="YggdrasilButton" type="Button" parent="HBoxContainer/StaffContainer/MarginContainer3" groups=["SubMenuButton"]]
 layout_mode = 2
 text = "Yggdrasil Staff"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvuhpbqc0wdfq"]
 
-[ext_resource type="Script" path="res://Scripts/map_menu.gd" id="1_rkpfa"]
+[ext_resource type="Script" path="res://Scripts/sub_menu.gd" id="1_aie5m"]
 [ext_resource type="Texture2D" uid="uid://41634vnjwsfw" path="res://addons/dialogic/Editor/Images/preview_character.png" id="1_td7rk"]
 [ext_resource type="Texture2D" uid="uid://d4n3j4lvatwxb" path="res://addons/dialogic/Editor/Images/Pieces/warning.svg" id="2_27f8j"]
 [ext_resource type="Texture2D" uid="uid://cspjyvye6c0r6" path="res://addons/dialogic/Editor/Images/Dropdown/leave.svg" id="3_ydj2h"]
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_rkpfa")
+script = ExtResource("1_aie5m")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="Button1" type="TextureButton" parent="GridContainer"]
+[node name="Button1" type="TextureButton" parent="GridContainer" groups=["SubMenuButton"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -42,7 +42,7 @@ layout_mode = 2
 [node name="Control3" type="Control" parent="GridContainer"]
 layout_mode = 2
 
-[node name="Button2" type="TextureButton" parent="GridContainer"]
+[node name="Button2" type="TextureButton" parent="GridContainer" groups=["SubMenuButton"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -59,7 +59,7 @@ layout_mode = 2
 [node name="Control6" type="Control" parent="GridContainer"]
 layout_mode = 2
 
-[node name="Button3" type="TextureButton" parent="GridContainer"]
+[node name="Button3" type="TextureButton" parent="GridContainer" groups=["SubMenuButton"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
