@@ -3,46 +3,59 @@ extends Control
 const LAST_HOUR: int = 8
 const num_of_clients: int = 2
 
+enum
+{
+	BRONZE,
+	STEEL,
+	ORICHALCUM,
+	OAK,
+	MAHOGANY,
+	YGGDRASIL,
+	GEM_FIRE,
+	GEM_WIND,
+	GEM_STORM,
+	GEM_WATER,
+	GEM_EARTH,
+	GEM_PRISM
+}
+
+var materials_popup: PopupPanel
 var tab_container: TabContainer
 
-var gold: int = 0
+var gold_count: int = 0
 
 var day_count: int = 1
 var hour_count: int = 1
 var hour_label: Label
+var gold_label: Label
 
 #Smithing Material
-var ingots: Dictionary =\
+var materials: Dictionary =\
 {
-"bronze": 0,
-"steel": 0,
-"orichalcum": 0
-}
-
-var logs: Dictionary =\
-{
-"oak": 0,
-"mahogany": 0,
-"yggdrasil": 0
-}
-
-var gems: Dictionary =\
-{
-"fire": 0,
-"wind": 0,
-"storm": 0,
-"water": 0,
-"earth": 0,
-"prism": 0
+BRONZE: 0,
+STEEL: 0,
+ORICHALCUM: 0,
+OAK: 0,
+MAHOGANY: 0,
+YGGDRASIL: 0,
+GEM_FIRE: 0,
+GEM_WIND: 0,
+GEM_STORM: 0,
+GEM_WATER: 0,
+GEM_EARTH: 0,
+GEM_PRISM: 0
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hour_label = $VBoxContainer/HBoxContainer/HourCountLabel #type_string(typeof())
+	hour_label = find_child("HourCountLabel") #type_string(typeof())
+	gold_label = find_child("GoldCountLabel")
 	tab_container = $VBoxContainer/TabContainer
-	var action_menu = $VBoxContainer/TabContainer/ActionMenu
-	action_menu.connect_menu_buttons([_take_client, _smith_item, _go_to_map])
+	materials_popup = $MaterialsPopup
+	tab_container.get_node("ActionMenu").connect_menu_buttons([_take_client, _smith_item, _go_to_map])
 	tab_container.get_node("MapMenu").connect_menu_buttons([func(): print("1"), func(): print("2"), func(): print("3")])
+	find_child("ShopButton").pressed.connect(func(): tab_container.current_tab = 0)
+	find_child("MaterialsButton").pressed.connect(func(): materials_popup.show())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -74,3 +87,28 @@ func _increment_hour(delta: int) -> bool:
 	
 	else:
 		return false
+		
+func _increment_material(mat_type: int, amount: int = 1) -> void:
+	materials[mat_type] += amount
+	materials_popup.update_label(mat_type, materials[mat_type])
+	
+func _decrement_material(mat_type: int, amount: int = 1) -> bool:
+	if materials[mat_type] < amount:
+		return false
+	
+	materials[mat_type] -= amount
+	materials_popup.update_label(mat_type, materials[mat_type])
+	return true
+
+func _increment_gold(amount: int = 1) -> void:
+	gold_count += amount
+	
+	gold_label.text = str(gold_count)
+	
+func _spend_gold(amount: int = 1) -> bool:
+	if gold_count < amount:
+		return false
+	
+	gold_count -= amount
+	gold_label.text = str(gold_count)
+	return true

@@ -1,0 +1,282 @@
+[gd_scene load_steps=7 format=3 uid="uid://bydq6x1ewrygx"]
+
+[ext_resource type="Script" path="res://Scenes/materials_popup.gd" id="1_8v0ov"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyaim"]
+bg_color = Color(0.25575, 0.123, 0.3, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e71hc"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_o761l"]
+color = Color(0.921569, 0.615686, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_i6jee"]
+color = Color(0.921569, 0.615686, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_liv76"]
+
+[node name="PopupPanel" type="PopupPanel"]
+transparent_bg = true
+initial_position = 2
+size = Vector2i(300, 400)
+visible = true
+always_on_top = true
+transparent = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_gyaim")
+script = ExtResource("1_8v0ov")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 300.0
+offset_bottom = 400.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e71hc")
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "Ingots"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_o761l")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer"]
+
+[node name="BronzeTextLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Bronze:"
+
+[node name="BronzeCountLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer2"]
+
+[node name="SteelTextLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Steel:"
+
+[node name="SteelCountLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer3"]
+
+[node name="OrichalcumTextLabel" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Orichalcum:"
+
+[node name="OrichalcumCountLabel" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "0"
+
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_i6jee")
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer3"]
+layout_mode = 2
+text = "Logs"
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_o761l")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer4"]
+
+[node name="OakTextLabel" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Oak:"
+
+[node name="OakCountLabel" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer5"]
+
+[node name="MahoganyTextLabel" type="Label" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Mahogany:"
+
+[node name="MahoganyCountLabel" type="Label" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/HBoxContainer6"]
+
+[node name="YggdrasilTextLabel" type="Label" parent="VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Yggdrasil:"
+
+[node name="YgdrasilCountLabel" type="Label" parent="VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "0"
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_i6jee")
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Gems"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_o761l")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/GridContainer/HBoxContainer"]
+
+[node name="FireTextLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "Fire:"
+
+[node name="FireCountLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/GridContainer/HBoxContainer2"]
+
+[node name="WindTextLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Wind:"
+
+[node name="WindCountLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/GridContainer/HBoxContainer3"]
+
+[node name="StormTextLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Storm:"
+
+[node name="StormCountLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer3"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/GridContainer/HBoxContainer4"]
+
+[node name="WaterTextLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Water:"
+
+[node name="WaterCountLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer4"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/GridContainer/HBoxContainer5"]
+
+[node name="EarthTextLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Earth:"
+
+[node name="EarthCountLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer5"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/GridContainer/HBoxContainer6"]
+
+[node name="PrismTextLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Prism:"
+
+[node name="PrismCountLabel" type="Label" parent="VBoxContainer/GridContainer/HBoxContainer6"]
+layout_mode = 2
+text = "0"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel4" type="Panel" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_liv76")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Close"

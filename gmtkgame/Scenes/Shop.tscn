@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6ffisb0lbxjs"]
+[gd_scene load_steps=7 format=3 uid="uid://c6ffisb0lbxjs"]
 
 [ext_resource type="Script" path="res://Scripts/control_script.gd" id="1_s56yj"]
 [ext_resource type="PackedScene" uid="uid://dt12atvv2fij" path="res://Scenes/ActionMenu.tscn" id="2_2unx5"]
 [ext_resource type="PackedScene" uid="uid://cjjoo5qov64l" path="res://Scenes/SmithMenu.tscn" id="3_htyhg"]
 [ext_resource type="PackedScene" uid="uid://bvuhpbqc0wdfq" path="res://Scenes/MapMenu.tscn" id="4_x2cl7"]
+[ext_resource type="PackedScene" uid="uid://bydq6x1ewrygx" path="res://Scenes/MaterialsPopup.tscn" id="5_6nrbl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtm0o"]
+bg_color = Color(0.576471, 0, 0, 1)
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
@@ -16,30 +20,90 @@ script = ExtResource("1_s56yj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_right = 1150.0
-offset_bottom = 650.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.15
+theme_override_styles/panel = SubResource("StyleBoxFlat_xtm0o")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ShopButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Shop"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="GoldTextLabel" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Gold: "
+
+[node name="GoldCountLabel" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MaterialsButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Materials"
+
+[node name="MerchandiseButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Merchandise"
+
+[node name="JobsButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Jobs"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 2
 
-[node name="DayTextLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="DayTextLabel" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Day: "
+text = "Day:"
 
-[node name="DayCountLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="DayCountLabel" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "1"
 
-[node name="HourTextLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="HourTextLabel" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Hour:"
 
-[node name="HourCountLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 20
+
+[node name="HourCountLabel" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 text = "1"
 
@@ -62,3 +126,6 @@ metadata/_tab_index = 1
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="MaterialsPopup" parent="." instance=ExtResource("5_6nrbl")]
+visible = false
