@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvuhpbqc0wdfq"]
+
+[ext_resource type="Script" path="res://Scripts/map_menu.gd" id="1_rkpfa"]
+[ext_resource type="Texture2D" uid="uid://41634vnjwsfw" path="res://addons/dialogic/Editor/Images/preview_character.png" id="1_td7rk"]
+[ext_resource type="Texture2D" uid="uid://d4n3j4lvatwxb" path="res://addons/dialogic/Editor/Images/Pieces/warning.svg" id="2_27f8j"]
+[ext_resource type="Texture2D" uid="uid://cspjyvye6c0r6" path="res://addons/dialogic/Editor/Images/Dropdown/leave.svg" id="3_ydj2h"]
+
+[node name="MapMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_rkpfa")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Button1" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("1_td7rk")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Control" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button2" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("2_27f8j")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Control4" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Control6" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button3" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_ydj2h")
+ignore_texture_size = true
+stretch_mode = 0

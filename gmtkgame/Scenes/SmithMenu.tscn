@@ -1,0 +1,142 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjjoo5qov64l"]
+
+[ext_resource type="Script" path="res://Scripts/smith_menu.gd" id="1_fa0kv"]
+
+[node name="SmithMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_fa0kv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SwordContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SwordContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CopperButton" type="Button" parent="HBoxContainer/SwordContainer/MarginContainer"]
+layout_mode = 2
+text = "Copper Sword"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/SwordContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SteelButton" type="Button" parent="HBoxContainer/SwordContainer/MarginContainer2"]
+layout_mode = 2
+text = "Steel Sword"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/SwordContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="OrichalcumButton" type="Button" parent="HBoxContainer/SwordContainer/MarginContainer3"]
+layout_mode = 2
+text = "Orichalcum Sword"
+
+[node name="DaggerContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DaggerContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CopperButton" type="Button" parent="HBoxContainer/DaggerContainer/MarginContainer"]
+layout_mode = 2
+text = "Copper Dagger"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/DaggerContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SteelButton" type="Button" parent="HBoxContainer/DaggerContainer/MarginContainer2"]
+layout_mode = 2
+text = "Steel Dagger"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/DaggerContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="OrichalcumButton" type="Button" parent="HBoxContainer/DaggerContainer/MarginContainer3"]
+layout_mode = 2
+text = "Orichalcum Dagger"
+
+[node name="StaffContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/StaffContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CopperButton" type="Button" parent="HBoxContainer/StaffContainer/MarginContainer"]
+layout_mode = 2
+text = "Oak Staff"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/StaffContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SteelButton" type="Button" parent="HBoxContainer/StaffContainer/MarginContainer2"]
+layout_mode = 2
+text = "Mahogany Staff"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/StaffContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="OrichalcumButton" type="Button" parent="HBoxContainer/StaffContainer/MarginContainer3"]
+layout_mode = 2
+text = "Yggdrasil Staff"

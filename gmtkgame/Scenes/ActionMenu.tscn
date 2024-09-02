@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dt12atvv2fij"]
 
-[ext_resource type="Script" path="res://Scenes/action_menu.gd" id="1_6gpk3"]
+[ext_resource type="Script" path="res://Scripts/action_menu.gd" id="1_6gpk3"]
 
 [node name="ActionMenu" type="BoxContainer"]
 size_flags_horizontal = 3
