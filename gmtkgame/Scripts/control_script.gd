@@ -27,6 +27,21 @@ enum RecipeItem
 	REQUIREMENTS
 }
 
+enum MerchInfo
+{
+	NAME,
+	STATS,
+	RECIPE,
+	NODE_REF
+}
+
+enum CxInfo
+{
+	NAME,
+	PICTURE,
+	STATS
+}
+
 var materials_popup: PopupPanel
 var merchandise_popup: PopupPanel
 var job_list_popup: PopupPanel
@@ -38,6 +53,9 @@ var day_count: int = 1
 var hour_count: int = 1
 var hour_label: Label
 var gold_label: Label
+
+var active_jobs: Array = []
+var held_merch: Array = []
 
 #Smithing Material
 var materials: Dictionary =\
@@ -62,11 +80,17 @@ var recipes: Array =\
 	{RecipeItem.NAME: "Steel Sword", RecipeItem.MATERIALS: [STEEL], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [2, 1, 0]},
 	{RecipeItem.NAME: "Orichalcum Sword", RecipeItem.MATERIALS: [ORICHALCUM], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [4, 1, 1]},
 	{RecipeItem.NAME: "Bronze Dagger", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [1], RecipeItem.REQUIREMENTS: [0, 1, 0]},
-	{RecipeItem.NAME: "Steel Dagger", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [1], RecipeItem.REQUIREMENTS: [0, 3, 0]},
-	{RecipeItem.NAME: "Orichalcum Dagger", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [1], RecipeItem.REQUIREMENTS: [1, 4, 1]},
-	{RecipeItem.NAME: "Oak Staff", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [0, 0, 2]},
-	{RecipeItem.NAME: "Mahogany Staff", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [0, 0, 4]},
-	{RecipeItem.NAME: "Yggdrasil Staff", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [1, 0, 6]}
+	{RecipeItem.NAME: "Steel Dagger", RecipeItem.MATERIALS: [STEEL], RecipeItem.AMOUNTS: [1], RecipeItem.REQUIREMENTS: [0, 3, 0]},
+	{RecipeItem.NAME: "Orichalcum Dagger", RecipeItem.MATERIALS: [ORICHALCUM], RecipeItem.AMOUNTS: [1], RecipeItem.REQUIREMENTS: [1, 4, 1]},
+	{RecipeItem.NAME: "Oak Staff", RecipeItem.MATERIALS: [OAK], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [0, 0, 2]},
+	{RecipeItem.NAME: "Mahogany Staff", RecipeItem.MATERIALS: [MAHOGANY], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [0, 0, 4]},
+	{RecipeItem.NAME: "Yggdrasil Staff", RecipeItem.MATERIALS: [YGGDRASIL], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [1, 0, 6]}
+]
+
+var customers: Array =\
+[
+	{CxInfo.NAME: "Man of No Renown", CxInfo.PICTURE: preload("res://Sprites/GMTK NoChinFinn.png"), CxInfo.STATS: [2, 1, 0]},
+	{CxInfo.NAME: "Foxman the Deranged", CxInfo.PICTURE: preload("res://Sprites/freaky Fox.png"), CxInfo.STATS: [1, 1, 3]}
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -76,6 +100,7 @@ func _ready() -> void:
 	tab_container = $VBoxContainer/TabContainer
 	materials_popup = $MaterialsPopup
 	merchandise_popup = $MerchandisePopup
+	job_list_popup = $JobListPopup
 	tab_container.get_node("ActionMenu").connect_menu_buttons([_take_client, _go_to_smithy, _go_to_map])
 	var smith_functions: Array = []
 	for i in range(9):
@@ -83,10 +108,11 @@ func _ready() -> void:
 	tab_container.get_node("SmithMenu").connect_menu_buttons(smith_functions)
 	tab_container.get_node("MapMenu").connect_menu_buttons([func(): tab_container.current_tab = 3, func(): tab_container.current_tab = 4, func(): print("3")])
 	tab_container.get_node("OreTraderMenu").connect_menu_buttons([func(): _transact(20, BRONZE), func(): _transact(50, STEEL), func(): _transact(200, ORICHALCUM)])
-	tab_container.get_node("OreTraderMenu").connect_menu_buttons([func(): _transact(20, OAK), func(): _transact(50, MAHOGANY), func(): _transact(200, YGGDRASIL)])
+	tab_container.get_node("SawmillMenu").connect_menu_buttons([func(): _transact(20, OAK), func(): _transact(50, MAHOGANY), func(): _transact(200, YGGDRASIL)])
 	find_child("ShopButton").pressed.connect(func(): tab_container.current_tab = 0)
 	find_child("MaterialsButton").pressed.connect(func(): materials_popup.show())
 	find_child("MerchandiseButton").pressed.connect(func(): merchandise_popup.show())
+	find_child("JobsButton").pressed.connect(func(): job_list_popup.show())
 	_increment_gold(200)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -99,9 +125,11 @@ func _take_client() -> void:
 	
 	var rng = RandomNumberGenerator.new()
 	
-	var client_choice: int = rng.randi_range(1, num_of_clients)
+	var client_choice: int = rng.randi_range(0, num_of_clients-1)
 	
-	Dialogic.start(["Client1", "Client2"][client_choice-1])
+	Dialogic.start(["Client1", "Client2"][client_choice])
+	
+	job_list_popup.add_job_unit(customers[client_choice])
 	
 func _go_to_smithy() -> void:
 	tab_container.current_tab = 1
@@ -155,7 +183,10 @@ func _smith_item(recipe_choice: int) -> void:
 	var chosen_recipe = recipes[recipe_choice]
 	
 	if _decrement_material(chosen_recipe[RecipeItem.MATERIALS][0], chosen_recipe[RecipeItem.AMOUNTS][0]):
-		merchandise_popup.add_merchandise_unit(chosen_recipe)
+		held_merch.append({
+			MerchInfo.RECIPE: recipe_choice,
+			MerchInfo.NODE_REF: merchandise_popup.add_merchandise_unit(chosen_recipe)
+		})
 	
 	else:
 		pass #TODO: Add error notification

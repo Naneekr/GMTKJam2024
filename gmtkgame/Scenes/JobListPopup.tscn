@@ -1,22 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca61kxo678l2o"]
+[gd_scene load_steps=3 format=3 uid="uid://7bd8a13vsiuq"]
 
-[ext_resource type="Script" path="res://Scripts/merchandise_popup.gd" id="1_q7fr4"]
+[ext_resource type="Script" path="res://Scripts/job_list_popup.gd" id="1_7jmfb"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_miss8"]
-bg_color = Color(0.505633, 0.338142, 0.128648, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or11q"]
+bg_color = Color(0.704488, 0.0369967, 0.207368, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="MerchandisePopup" type="PopupPanel"]
+[node name="JobListPopup" type="PopupPanel"]
 transparent_bg = true
 initial_position = 2
 size = Vector2i(300, 400)
 visible = true
 transparent = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_miss8")
-script = ExtResource("1_q7fr4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_or11q")
+script = ExtResource("1_7jmfb")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchors_preset = 15
