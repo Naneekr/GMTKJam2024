@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://u8nxxbtalhuy"]
+
+[ext_resource type="Script" path="res://Scripts/sub_menu.gd" id="1_vnray"]
+
+[node name="OreTraderMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vnray")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer" groups=["SubMenuButton"]]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Buy Bronze Ingot
+20 gold"
+
+[node name="Button2" type="Button" parent="HBoxContainer" groups=["SubMenuButton"]]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Buy Steel Ingot
+50 gold"
+
+[node name="Button3" type="Button" parent="HBoxContainer" groups=["SubMenuButton"]]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Buy Orichalcum Ingot
+200 gold"

@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6ffisb0lbxjs"]
+[gd_scene load_steps=10 format=3 uid="uid://c6ffisb0lbxjs"]
 
 [ext_resource type="Script" path="res://Scripts/control_script.gd" id="1_s56yj"]
 [ext_resource type="PackedScene" uid="uid://dt12atvv2fij" path="res://Scenes/ActionMenu.tscn" id="2_2unx5"]
 [ext_resource type="PackedScene" uid="uid://cjjoo5qov64l" path="res://Scenes/SmithMenu.tscn" id="3_htyhg"]
 [ext_resource type="PackedScene" uid="uid://bvuhpbqc0wdfq" path="res://Scenes/MapMenu.tscn" id="4_x2cl7"]
 [ext_resource type="PackedScene" uid="uid://bydq6x1ewrygx" path="res://Scenes/MaterialsPopup.tscn" id="5_6nrbl"]
+[ext_resource type="PackedScene" uid="uid://u8nxxbtalhuy" path="res://Scenes/OreTraderMenu.tscn" id="5_nuvmc"]
+[ext_resource type="PackedScene" uid="uid://cmvjijhgkduak" path="res://Scenes/SawmillMenu.tscn" id="6_uoghs"]
+[ext_resource type="PackedScene" uid="uid://ca61kxo678l2o" path="res://Scenes/MerchandisePopup.tscn" id="8_7c0pe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtm0o"]
 bg_color = Color(0.576471, 0, 0, 1)
@@ -127,5 +130,18 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
+[node name="OreTraderMenu" parent="VBoxContainer/TabContainer" instance=ExtResource("5_nuvmc")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="SawmillMenu" parent="VBoxContainer/TabContainer" instance=ExtResource("6_uoghs")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
 [node name="MaterialsPopup" parent="." instance=ExtResource("5_6nrbl")]
+visible = false
+
+[node name="MerchandisePopup" parent="." instance=ExtResource("8_7c0pe")]
 visible = false

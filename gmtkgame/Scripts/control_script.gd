@@ -19,7 +19,17 @@ enum
 	GEM_PRISM
 }
 
+enum RecipeItem
+{
+	NAME,
+	MATERIALS,
+	AMOUNTS,
+	REQUIREMENTS
+}
+
 var materials_popup: PopupPanel
+var merchandise_popup: PopupPanel
+var job_list_popup: PopupPanel
 var tab_container: TabContainer
 
 var gold_count: int = 0
@@ -46,16 +56,38 @@ GEM_EARTH: 0,
 GEM_PRISM: 0
 }
 
+var recipes: Array =\
+[
+	{RecipeItem.NAME: "Bronze Sword", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [1, 0, 0]},
+	{RecipeItem.NAME: "Steel Sword", RecipeItem.MATERIALS: [STEEL], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [2, 1, 0]},
+	{RecipeItem.NAME: "Orichalcum Sword", RecipeItem.MATERIALS: [ORICHALCUM], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [4, 1, 1]},
+	{RecipeItem.NAME: "Bronze Dagger", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [1], RecipeItem.REQUIREMENTS: [0, 1, 0]},
+	{RecipeItem.NAME: "Steel Dagger", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [1], RecipeItem.REQUIREMENTS: [0, 3, 0]},
+	{RecipeItem.NAME: "Orichalcum Dagger", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [1], RecipeItem.REQUIREMENTS: [1, 4, 1]},
+	{RecipeItem.NAME: "Oak Staff", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [0, 0, 2]},
+	{RecipeItem.NAME: "Mahogany Staff", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [0, 0, 4]},
+	{RecipeItem.NAME: "Yggdrasil Staff", RecipeItem.MATERIALS: [BRONZE], RecipeItem.AMOUNTS: [2], RecipeItem.REQUIREMENTS: [1, 0, 6]}
+]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hour_label = find_child("HourCountLabel") #type_string(typeof())
 	gold_label = find_child("GoldCountLabel")
 	tab_container = $VBoxContainer/TabContainer
 	materials_popup = $MaterialsPopup
-	tab_container.get_node("ActionMenu").connect_menu_buttons([_take_client, _smith_item, _go_to_map])
-	tab_container.get_node("MapMenu").connect_menu_buttons([func(): print("1"), func(): print("2"), func(): print("3")])
+	merchandise_popup = $MerchandisePopup
+	tab_container.get_node("ActionMenu").connect_menu_buttons([_take_client, _go_to_smithy, _go_to_map])
+	var smith_functions: Array = []
+	for i in range(9):
+		smith_functions.append(func(): _smith_item(i))
+	tab_container.get_node("SmithMenu").connect_menu_buttons(smith_functions)
+	tab_container.get_node("MapMenu").connect_menu_buttons([func(): tab_container.current_tab = 3, func(): tab_container.current_tab = 4, func(): print("3")])
+	tab_container.get_node("OreTraderMenu").connect_menu_buttons([func(): _transact(20, BRONZE), func(): _transact(50, STEEL), func(): _transact(200, ORICHALCUM)])
+	tab_container.get_node("OreTraderMenu").connect_menu_buttons([func(): _transact(20, OAK), func(): _transact(50, MAHOGANY), func(): _transact(200, YGGDRASIL)])
 	find_child("ShopButton").pressed.connect(func(): tab_container.current_tab = 0)
 	find_child("MaterialsButton").pressed.connect(func(): materials_popup.show())
+	find_child("MerchandiseButton").pressed.connect(func(): merchandise_popup.show())
+	_increment_gold(200)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -71,7 +103,7 @@ func _take_client() -> void:
 	
 	Dialogic.start(["Client1", "Client2"][client_choice-1])
 	
-func _smith_item() -> void:
+func _go_to_smithy() -> void:
 	tab_container.current_tab = 1
 	
 func _go_to_map() -> void:
@@ -112,3 +144,18 @@ func _spend_gold(amount: int = 1) -> bool:
 	gold_count -= amount
 	gold_label.text = str(gold_count)
 	return true
+
+func _transact(gold_amount: int, mat_type: int, mat_amount: int = 1) -> void:
+	if _spend_gold(gold_amount):
+		_increment_material(mat_type, mat_amount)
+	else:
+		pass #TODO: Add error notification
+
+func _smith_item(recipe_choice: int) -> void:
+	var chosen_recipe = recipes[recipe_choice]
+	
+	if _decrement_material(chosen_recipe[RecipeItem.MATERIALS][0], chosen_recipe[RecipeItem.AMOUNTS][0]):
+		merchandise_popup.add_merchandise_unit(chosen_recipe)
+	
+	else:
+		pass #TODO: Add error notification
