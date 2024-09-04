@@ -6,7 +6,6 @@ var menu_buttons: Array
 
 
 func _ready() -> void:
-	var this = SubMenu
 	menu_buttons = get_menu_buttons()
 
 func get_menu_buttons() -> Array:

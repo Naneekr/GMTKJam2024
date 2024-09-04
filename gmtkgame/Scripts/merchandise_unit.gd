@@ -7,11 +7,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
-func create(merch_name: String, strength: String, dexterity: String, intelligence: String) -> void:
+func create(merch_name: String, strength: String, dexterity: String, intelligence: String, callback: Callable) -> void:
 	find_child("NameLabel").text = merch_name
 	find_child("StrengthLabel").text = strength
 	find_child("DexterityLabel").text = dexterity
 	find_child("IntelligenceLabel").text = intelligence
+	get_node("Button").pressed.connect(func(): callback.call(self))

@@ -16,16 +16,17 @@ func _ready() -> void:
 	container = $ScrollContainer/VBoxContainer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
-func add_merchandise_unit(merch_data: Dictionary) -> MerchandiseUnit:
+func add_merchandise_unit(merch_data: Dictionary, callback: Callable) -> MerchandiseUnit:
 	var new_unit: MerchandiseUnit = merch_unit.instantiate()
 	new_unit.create(
 		merch_data[RecipeItem.NAME], 
 		str(merch_data[RecipeItem.REQUIREMENTS][0]), 
 		str(merch_data[RecipeItem.REQUIREMENTS][1]), 
-		str(merch_data[RecipeItem.REQUIREMENTS][2])
+		str(merch_data[RecipeItem.REQUIREMENTS][2]),
+		callback
 	)
 	container.add_child(new_unit)
 	return new_unit

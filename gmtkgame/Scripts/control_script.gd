@@ -54,8 +54,11 @@ var hour_count: int = 1
 var hour_label: Label
 var gold_label: Label
 
-var active_jobs: Array = []
-var held_merch: Array = []
+var is_trading: bool = false
+var current_job: JobUnit
+
+var active_jobs: Dictionary = {}
+var held_merch: Dictionary = {}
 
 #Smithing Material
 var materials: Dictionary =\
@@ -100,6 +103,7 @@ func _ready() -> void:
 	tab_container = $VBoxContainer/TabContainer
 	materials_popup = $MaterialsPopup
 	merchandise_popup = $MerchandisePopup
+	merchandise_popup.popup_hide.connect(func(): is_trading = false)
 	job_list_popup = $JobListPopup
 	tab_container.get_node("ActionMenu").connect_menu_buttons([_take_client, _go_to_smithy, _go_to_map])
 	var smith_functions: Array = []
@@ -129,7 +133,8 @@ func _take_client() -> void:
 	
 	Dialogic.start(["Client1", "Client2"][client_choice])
 	
-	job_list_popup.add_job_unit(customers[client_choice])
+	#Bruh
+	active_jobs[job_list_popup.add_job_unit(customers[client_choice], _open_trade_menu)] = customers[client_choice]
 	
 func _go_to_smithy() -> void:
 	tab_container.current_tab = 1
@@ -179,14 +184,30 @@ func _transact(gold_amount: int, mat_type: int, mat_amount: int = 1) -> void:
 	else:
 		pass #TODO: Add error notification
 
+#TODO: fix this shit
 func _smith_item(recipe_choice: int) -> void:
 	var chosen_recipe = recipes[recipe_choice]
 	
 	if _decrement_material(chosen_recipe[RecipeItem.MATERIALS][0], chosen_recipe[RecipeItem.AMOUNTS][0]):
-		held_merch.append({
-			MerchInfo.RECIPE: recipe_choice,
-			MerchInfo.NODE_REF: merchandise_popup.add_merchandise_unit(chosen_recipe)
-		})
+		held_merch[merchandise_popup.add_merchandise_unit(chosen_recipe, _activate_merchandise)] = chosen_recipe
 	
 	else:
 		pass #TODO: Add error notification
+
+func _open_trade_menu(selected_job: JobUnit) -> void:
+	is_trading = true
+	merchandise_popup.show()
+	current_job = selected_job
+		
+func _activate_merchandise(selected_merchandise) -> void:
+	if is_trading:
+		#TODO: fulfill selected job
+		var current_cx = active_jobs[current_job]
+		var current_merch = held_merch[selected_merchandise]
+		#TODO: check stats, give gold, cx dialogue, and stuff
+		active_jobs.erase(current_job)
+		held_merch.erase(selected_merchandise)
+		current_job.queue_free()
+		selected_merchandise.queue_free()
+	else:
+		pass #Can add functionality to clicking on merchandise outside of job fulfillment here

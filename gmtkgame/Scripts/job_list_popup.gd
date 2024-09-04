@@ -15,17 +15,18 @@ func _ready() -> void:
 	container = $ScrollContainer/VBoxContainer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
-func add_job_unit(job_data: Dictionary) -> JobUnit:
+func add_job_unit(job_data: Dictionary, callback: Callable) -> JobUnit:
 	var new_unit: JobUnit = job_unit.instantiate()
 	new_unit.create(
 		job_data[CxInfo.PICTURE],
 		job_data[CxInfo.NAME], 
 		str(job_data[CxInfo.STATS][0]), 
 		str(job_data[CxInfo.STATS][1]), 
-		str(job_data[CxInfo.STATS][2])
+		str(job_data[CxInfo.STATS][2]),
+		callback
 	)
 	container.add_child(new_unit)
 	return new_unit

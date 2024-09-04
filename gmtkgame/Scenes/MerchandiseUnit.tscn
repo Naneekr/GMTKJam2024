@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg35yjd8p78lj"]
+[gd_scene load_steps=6 format=3 uid="uid://dg35yjd8p78lj"]
 
 [ext_resource type="Texture2D" uid="uid://bx5c7x4o03g7k" path="res://Sprites/icon.svg" id="1_51owf"]
 [ext_resource type="Script" path="res://Scripts/merchandise_unit.gd" id="1_kex4u"]
@@ -13,6 +13,8 @@ border_color = Color(0.14, 0.14, 0.14, 1)
 bg_color = Color(0, 0, 0, 0)
 border_width_bottom = 2
 border_color = Color(0.95173, 0.784421, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oks4h"]
 
 [node name="MerchandiseUnit" type="MarginContainer"]
 offset_right = 40.0
@@ -92,3 +94,7 @@ text = "Int: "
 
 [node name="IntelligenceLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oks4h")
